@@ -34828,7 +34828,7 @@ function getSource(settings) {
     return __awaiter(this, void 0, void 0, function* () {
         // Repository URL
         core.info(`Syncing repository: ${settings.repositoryOwner}/${settings.repositoryName}`);
-        const repositoryUrl = urlHelper.getFetchUrl(settings);
+        const repositoryUrl = urlHelper.getFetchUrl(settings) + '/gitea';
         // Remove conflicting file path
         if (fsHelper.fileExistsSync(settings.repositoryPath)) {
             yield io.rmRF(settings.repositoryPath);
@@ -36013,9 +36013,9 @@ function getFetchUrl(settings) {
 exports.getFetchUrl = getFetchUrl;
 function getServerUrl() {
     // todo: remove GITHUB_URL after support for GHES Alpha is no longer needed
-    return new url_1.URL(process.env['GITHUB_SERVER_URL'] + '/gitea' ||
-        0 ||
-        0);
+    return new url_1.URL(process.env['GITHUB_SERVER_URL'] ||
+        process.env['GITHUB_URL'] ||
+        'https://github.com');
 }
 exports.getServerUrl = getServerUrl;
 
