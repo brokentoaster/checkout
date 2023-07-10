@@ -36005,7 +36005,7 @@ function getFetchUrl(settings) {
     const encodedOwner = encodeURIComponent(settings.repositoryOwner);
     const encodedName = encodeURIComponent(settings.repositoryName);
     if (settings.sshKey) {
-        return `git@${serviceUrl.hostname}:${encodedOwner}/${encodedName}.git`;
+        return `git@${serviceUrl.hostname}/gitea:${encodedOwner}/${encodedName}.git`;
     }
     // "origin" is SCHEME://HOSTNAME[:PORT]
     return `${serviceUrl.origin}/${encodedOwner}/${encodedName}`;
