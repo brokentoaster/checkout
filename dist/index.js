@@ -36013,9 +36013,12 @@ function getFetchUrl(settings) {
 exports.getFetchUrl = getFetchUrl;
 function getServerUrl() {
     // todo: remove GITHUB_URL after support for GHES Alpha is no longer needed
-    return new url_1.URL(process.env['GITHUB_SERVER_URL'] + '/gitea' ||
-        0 ||
-        0);
+    // return new URL(
+    //   process.env['GITHUB_SERVER_URL'] + '/gitea' ||
+    //     process.env['GITHUB_URL'] + '/gitea' ||
+    //     'https://github.com'
+    // )
+    return new url_1.URL('https://dev.hargassner.at/gitea');
 }
 exports.getServerUrl = getServerUrl;
 
