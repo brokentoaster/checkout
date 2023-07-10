@@ -16,14 +16,14 @@ export function getFetchUrl(settings: IGitSourceSettings): string {
   }
 
   // "origin" is SCHEME://HOSTNAME[:PORT]
-  return `${serviceUrl.origin}/gitea/${encodedOwner}/${encodedName}`
+  return `${serviceUrl.origin}/${encodedOwner}/${encodedName}`
 }
 
 export function getServerUrl(): URL {
   // todo: remove GITHUB_URL after support for GHES Alpha is no longer needed
   return new URL(
-    process.env['GITHUB_SERVER_URL'] ||
-      process.env['GITHUB_URL'] ||
+    process.env['GITHUB_SERVER_URL'] + '/gitea' ||
+      process.env['GITHUB_URL'] + '/gitea' ||
       'https://github.com'
   )
 }
