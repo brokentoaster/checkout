@@ -36005,7 +36005,7 @@ function getFetchUrl(settings) {
     const encodedOwner = encodeURIComponent(settings.repositoryOwner);
     const encodedName = encodeURIComponent(settings.repositoryName);
     if (settings.sshKey) {
-        return `git@${serviceUrl.hostname}/gitea:${encodedOwner}/${encodedName}.git`;
+        return `git@${serviceUrl.hostname}:${encodedOwner}/${encodedName}.git`;
     }
     // "origin" is SCHEME://HOSTNAME[:PORT]
     return `${serviceUrl.origin}/${encodedOwner}/${encodedName}`;
@@ -36013,9 +36013,9 @@ function getFetchUrl(settings) {
 exports.getFetchUrl = getFetchUrl;
 function getServerUrl() {
     // todo: remove GITHUB_URL after support for GHES Alpha is no longer needed
-    return new url_1.URL(process.env['GITHUB_SERVER_URL'] ||
-        process.env['GITHUB_URL'] ||
-        'https://github.com');
+    return new url_1.URL(process.env['GITHUB_SERVER_URL'] + '/gitea' ||
+        0 ||
+        0);
 }
 exports.getServerUrl = getServerUrl;
 

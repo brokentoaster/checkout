@@ -12,7 +12,7 @@ export function getFetchUrl(settings: IGitSourceSettings): string {
   const encodedOwner = encodeURIComponent(settings.repositoryOwner)
   const encodedName = encodeURIComponent(settings.repositoryName)
   if (settings.sshKey) {
-    return `git@${serviceUrl.hostname}/gitea:${encodedOwner}/${encodedName}.git`
+    return `git@${serviceUrl.hostname}:${encodedOwner}/${encodedName}.git`
   }
 
   // "origin" is SCHEME://HOSTNAME[:PORT]
@@ -22,7 +22,7 @@ export function getFetchUrl(settings: IGitSourceSettings): string {
 export function getServerUrl(): URL {
   // todo: remove GITHUB_URL after support for GHES Alpha is no longer needed
   return new URL(
-    process.env['GITHUB_SERVER_URL'] ||
+    process.env['GITHUB_SERVER_URL'] + '/gitea' ||
       process.env['GITHUB_URL'] ||
       'https://github.com'
   )
