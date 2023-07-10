@@ -17,7 +17,7 @@ export async function getSource(settings: IGitSourceSettings): Promise<void> {
   core.info(
     `Syncing repository: ${settings.repositoryOwner}/${settings.repositoryName}`
   )
-  const repositoryUrl = urlHelper.getFetchUrl(settings) + '/gitea'
+  const repositoryUrl = urlHelper.getFetchUrl(settings)
 
   // Remove conflicting file path
   if (fsHelper.fileExistsSync(settings.repositoryPath)) {
