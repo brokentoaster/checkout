@@ -36008,17 +36008,14 @@ function getFetchUrl(settings) {
         return `git@${serviceUrl.hostname}:${encodedOwner}/${encodedName}.git`;
     }
     // "origin" is SCHEME://HOSTNAME[:PORT]
-    return `${serviceUrl.origin}/${encodedOwner}/${encodedName}`;
+    return `${serviceUrl.origin}${serviceUrl.pathname}${encodedOwner}/${encodedName}`;
 }
 exports.getFetchUrl = getFetchUrl;
 function getServerUrl() {
     // todo: remove GITHUB_URL after support for GHES Alpha is no longer needed
-    // return new URL(
-    //   process.env['GITHUB_SERVER_URL'] + '/gitea' ||
-    //     process.env['GITHUB_URL'] + '/gitea' ||
-    //     'https://github.com'
-    // )
-    return new url_1.URL('https://dev.hargassner.at/gitea');
+    return new url_1.URL(process.env['GITHUB_SERVER_URL'] ||
+        process.env['GITHUB_URL'] ||
+        'https://github.com');
 }
 exports.getServerUrl = getServerUrl;
 
