@@ -34393,6 +34393,7 @@ class GitCommandManager {
     }
     init() {
         return __awaiter(this, void 0, void 0, function* () {
+            yield this.execGit(['config', '--global', 'init.defaultBranch', 'main']);
             yield this.execGit(['init', this.workingDirectory]);
         });
     }
