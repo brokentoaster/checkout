@@ -2,26 +2,22 @@
   <a href="https://github.com/actions/checkout"><img alt="GitHub Actions status" src="https://github.com/actions/checkout/workflows/test-local/badge.svg"></a>
 </p>
 
-# Checkout V3
-
-This action checks-out your repository under `$GITHUB_WORKSPACE`, so your workflow can access it.
-
-Only a single commit is fetched by default, for the ref/SHA that triggered the workflow. Set `fetch-depth: 0` to fetch all history for all branches and tags. Refer [here](https://help.github.com/en/articles/events-that-trigger-workflows) to learn which commit `$GITHUB_SHA` points to for different events.
-
-The auth token is persisted in the local git config. This enables your scripts to run authenticated git commands. The token is removed during post-job cleanup. Set `persist-credentials: false` to opt-out.
-
-When Git 2.18 or higher is not in your PATH, falls back to the REST API to download the files.
+This is a fork of https://github.com/actions/checkout@v3
 
 # What's new
 
-- Updated to the node16 runtime by default
-  - This requires a minimum [Actions Runner](https://github.com/actions/runner/releases/tag/v2.285.0) version of v2.285.0 to run, which is by default available in GHES 3.4 or later.
+With this action it is possible to check out a repository located on a Gitea instance with subdirectories.
+
+Changed  
+`https://<domain>[:<port>]/<name>/<repository>`  
+to  
+`https://<domain>[:<port>]/<subpath>/<name>/<repository>`
 
 # Usage
 
 <!-- start usage -->
 ```yaml
-- uses: actions/checkout@v3
+- uses: https://gitea.com/ScMi1/checkout@v1
   with:
     # Repository name with owner. For example, actions/checkout
     # Default: ${{ github.repository }}
