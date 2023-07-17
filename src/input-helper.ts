@@ -23,6 +23,10 @@ export async function getInputs(): Promise<IGitSourceSettings> {
     `${github.context.repo.owner}/${github.context.repo.repo}`
   core.debug(`qualified repository = '${qualifiedRepository}'`)
   const splitRepository = qualifiedRepository.split('/')
+  if(splitRepository.length === 3) {
+    splitRepository.shift()
+  }
+
   if (
     splitRepository.length !== 2 ||
     !splitRepository[0] ||
