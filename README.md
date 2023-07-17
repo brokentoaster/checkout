@@ -4,6 +4,12 @@
 
 This is a fork of https://github.com/actions/checkout@v3
 
+# Build
+
+## Windows
+
+ncc.cmd build .\src\main.ts
+
 # What's new
 
 With this action it is possible to check out a repository located on a Gitea instance with subdirectories.
