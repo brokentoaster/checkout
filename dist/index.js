@@ -33916,13 +33916,13 @@ class GitAuthHelper {
         this.settings = gitSourceSettings || {};
         // Token auth header
         const serverUrl = urlHelper.getServerUrl();
-        this.tokenConfigKey = `http.${serverUrl.origin}/.extraheader`; // "origin" is SCHEME://HOSTNAME[:PORT]
+        this.tokenConfigKey = `http.${serverUrl.origin}${serverUrl.pathname}/.extraheader`; // "origin" is SCHEME://HOSTNAME[:PORT]
         const basicCredential = Buffer.from(`x-access-token:${this.settings.authToken}`, 'utf8').toString('base64');
         core.setSecret(basicCredential);
         this.tokenPlaceholderConfigValue = `AUTHORIZATION: basic ***`;
         this.tokenConfigValue = `AUTHORIZATION: basic ${basicCredential}`;
         // Instead of SSH URL
-        this.insteadOfKey = `url.${serverUrl.origin}/.insteadOf`; // "origin" is SCHEME://HOSTNAME[:PORT]
+        this.insteadOfKey = `url.${serverUrl.origin}${serverUrl.pathname}/.insteadOf`; // "origin" is SCHEME://HOSTNAME[:PORT]
         this.insteadOfValues.push(`git@${serverUrl.hostname}:`);
         if (this.settings.workflowOrganizationId) {
             this.insteadOfValues.push(`org-${this.settings.workflowOrganizationId}@github.com:`);
