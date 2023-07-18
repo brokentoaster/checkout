@@ -23,20 +23,15 @@ export async function getInputs(): Promise<IGitSourceSettings> {
     `${github.context.repo.owner}/${github.context.repo.repo}`
   core.debug(`qualified repository = '${qualifiedRepository}'`)
   const splitRepository = qualifiedRepository.split('/')
-  core.info(splitRepository.toString())
-  if(splitRepository.length === 3) {
-    splitRepository.shift()
-  }
-
-  if (
-    splitRepository.length !== 2 ||
-    !splitRepository[0] ||
-    !splitRepository[1]
-  ) {
-    throw new Error(
-      `Invalid repository '${qualifiedRepository}'. Expected format {owner}/{repo}.`
-    )
-  }
+  // if (
+  //   splitRepository.length !== 2 ||
+  //   !splitRepository[0] ||
+  //   !splitRepository[1]
+  // ) {
+  //   throw new Error(
+  //     `Invalid repository '${qualifiedRepository}'. Expected format {owner}/{repo}.`
+  //   )
+  // }
   result.repositoryOwner = splitRepository[0]
   result.repositoryName = splitRepository[1]
 
